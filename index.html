@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manos Inquietas Justi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7A9E7E;
+            --primary-dark: #5A7C5D;
+            --secondary: #F0E6D2;
+            --accent: #D4A59A;
+            --dark: #2C3E2C;
+            --light: #F9F7F3;
+            --text: #333333;
+            --text-light: #5E6D5E;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 400;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: white;
+            color: var(--dark);
+            padding: 25px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            letter-spacing: 0.5px;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://www.sierrapambley.org/wp-content/uploads/Artesania.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .about {
+            padding: 100px 0;
+            text-align: center;
+            background-color: white;
+            position: relative;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1518998053901-5348d3961a04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            opacity: 0.03;
+            z-index: 0;
+        }
+        
+        .about .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.15rem;
+            color: var(--text-light);
+        }
+        
+        .mission-stats {
+            display: flex;
+            justify-content: space-around;
+            max-width: 900px;
+            margin: 50px auto 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+        }
+        
+        .products {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .eco-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .product-info {
+            padding: 25px;
+            position: relative;
+        }
+        
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+        
+        .product-price {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .product-description {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(122, 158, 126, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .wishlist-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .wishlist-btn:hover {
+            color: var(--accent);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .contact-info {
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .mission-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-item {
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero {
+                height: 70vh;
+                min-height: 500px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .about, .products {
+                padding: 70px 0;
+            }
+            
+            .section-title, .about h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Manos <span>Inquietas</span> Justi</div>
+                    </div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Artesanía sostenible hecha con amor</h1>
+            <p>Cada producto cuenta una historia de creatividad y respeto por el medio ambiente</p>
+            <a href="#products" class="btn">Descubre nuestros productos</a>
+        </div>
+    </section>
+    
+    <section class="about">
+        <div class="container">
+            <h2>Sobre Manos Inquietas Justi</h2>
+            <p>En Manos Inquietas Justi, creemos en la belleza de lo hecho a mano y en la importancia de cuidar nuestro planeta. Cada uno de nuestros productos es creado con materiales ecológicos y técnicas tradicionales, asegurando piezas únicas que llevan consigo el calor humano de su creación.</p>
+            <p>Nuestra filosofía se basa en el consumo responsable, la durabilidad y el diseño consciente. Desde los materiales que seleccionamos hasta los procesos de producción, cada decisión está guiada por nuestro compromiso con la sostenibilidad y la artesanía de calidad.</p>
+            
+            <div class="mission-stats">
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Hecho a mano</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Eco</div>
+                    <div class="stat-label">Materiales sostenibles</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Únicas</div>
+                    <div class="stat-label">Piezas originales</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Nuestros Productos</h2>
+            <p class="section-subtitle">Descubre nuestra colección de productos artesanales, cada uno creado con cuidado y atención al detalle para ofrecerte lo mejor de la artesanía sostenible.</p>
+            
+            <div class="product-grid">
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <div class="eco-badge">Ecológico</div>
+                    <div class="product-image">
+                        <img src="mariposas.jpg" alt="Mariposas de colores hechas a mano">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mariposas Coloridas</h3>
+                        <div class="product-price">$12.99</div>
+                        <p class="product-description">Encantadoras mariposas artesanales multicolores, perfectas como broche para ropa o como llavero. Cada una es única, tejida con hilos de algodón ecológico y decorada con detalles meticulosos.</p>
+                        
+                    </div>
+                </div>
+                
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <div class="eco-badge">Ecológico</div>
+                    <div class="product-image">
+                        <img src="angeles.jpg" alt="Ángeles de crochet de colores">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ángeles de Crochet</h3>
+                        <div class="product-price">$14.99</div>
+                        <p class="product-description">Adorables ángeles tejidos a crochet en variados colores, ideales como llaveros o decoración. Hechos con hilo de alta calidad y rellenos de fibra ecológica. Un regalo lleno de significado y artesanía.</p>
+                        
+                    </div>
+                </div>
+                
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <div class="eco-badge">Ecológico</div>
+                    <div class="product-image">
+                        <img src="personitas.jpg" alt="Personitas de colores llaveros">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Personitas Coloridas</h3>
+                        <div class="product-price">$13.99</div>
+                        <p class="product-description">Divertidas personitas tejidas a crochet, perfectas como llaveros originales. Cada una con su propia personalidad y combinación de colores. Hechas con materiales suaves y duraderos.</p>
+                        
+                    </div>
+                </div>
+                
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <div class="eco-badge">Ecológico</div>
+                    <div class="product-image">
+                        <img src="tortugas.jpg" alt="Tortugas de crochet de colores">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Tortugas Ecológicas</h3>
+                        <div class="product-price">$15.99</div>
+                        <p class="product-description">Tortugas tejidas a mano con hilos de algodón orgánico, símbolo de paciencia y longevidad. Ideales como llaveros o amuletos. Disponibles en diversos tonos inspirados en la naturaleza.</p>
+                        
+                    </div>
+                </div>
+                
+                <!-- Producto 5 -->
+                <div class="product-card">
+                    <div class="eco-badge">Ecológico</div>
+                    <div class="product-image">
+                        <img src="mariquitas.jpg" alt="Mariquitas de crochet de colores">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mariquitas Alegres</h3>
+                        <div class="product-price">$12.99</div>
+                        <p class="product-description">Coloridas mariquitas tejidas a crochet, portadoras de buena suerte según la tradición. Llaveros artesanales que alegran cualquier juego de llaves. Hechas con materiales no tóxicos y seguros.</p>
+                        
+                    </div>
+                </div>
+                
+                <!-- Producto 6 -->
+                <div class="product-card">
+                    <div class="eco-badge">Ecológico</div>
+                    <div class="product-image">
+                        <img src="rockandroll.jpg" alt="Rock and rolls para bocadillos">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Rock & Roll Ecológicos</h3>
+                        <div class="product-price">$18.99</div>
+                        <p class="product-description">Prácticos y estilosos portabocadillos reutilizables, forrados con plástico alimenticio seguro. Diversos diseños para todos los gustos. Una solución ecológica para llevar tu comida, reduciendo el uso de papel aluminio o film plástico.</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-about">
+                    <div class="footer-logo">Manos Inquietas Justi</div>
+                    <p>Artesanía sostenible hecha con amor y respeto por la naturaleza. Cada pieza cuenta una historia de creatividad y compromiso con el medio ambiente.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="footer-column footer-contact">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> Teléfono: -</p>
+                        <p><i class="fas fa-envelope"></i> Email: -</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Manos Inquietas Justi. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+    
+   
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
